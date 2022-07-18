@@ -1,11 +1,19 @@
 const express = require('express')
 const dotenv= require('dotenv').config()
+const bodyParser= require('body-parser');
+const cors=require('cors');
 
 const {DB_CONNECT} = require('./db/connect')
 
 const app= express()
 
-// db url
+// middleware to spport client and server 
+app.use(bodyParser.json({limit:"30mb",extended:true}))
+app.use(bodyParser.urlencoded({limit:"30mb",extended:true}))
+app.use(cors())
+
+
+// atlas db url
 const DB_connect_URL= `mongodb+srv://sanjib:${process.env.DB_PASSWORD}@cluster0.5x2mffq.mongodb.net/${process.env.DB_NAME}`
 
 DB_CONNECT(DB_connect_URL); // database connect
