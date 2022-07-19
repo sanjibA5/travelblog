@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 
 const DB_CONNECT=async (DB_connect_URL)=>{
     try {
-      await  mongoose.connect(DB_connect_URL);
+      await  mongoose.connect(DB_connect_URL,{useNewurlParser:true,useUnifiedTopology:true});
         console.log("db connected")
         
     } catch (error) {
@@ -11,6 +11,7 @@ const DB_CONNECT=async (DB_connect_URL)=>{
     }
    
 }
+// mongoose.set("useFindAndModify",false)
 
 
 module.exports={
