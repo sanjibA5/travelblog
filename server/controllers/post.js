@@ -16,15 +16,16 @@ const getPost= async (req,res)=>{
 }
 const createPost=async (req,res)=>{
     const postData= req.body;
+   
   
     
     // if(Object.keys(postData).length==0){
     //      return res.status(500).json({status:"failed","error":"All the field must be declared"});
 
     // }
-    const PostMessage = new PostMessage(postData)
-   try {
-    await PostMessage.save()
+    try {
+       const PostMessagedata = new PostMessage(postData)
+        await PostMessagedata.save()
 
     return res.status(201).json({status:"saved", PostMessage});
    } catch (error) {
