@@ -8,7 +8,7 @@ import Form from './components/Form/Form'
 import {getPost} from './actions/posts'
 
 import makeStyles  from './styles'
-// 43
+// 1.10
 
 // https://www.youtube.com/watch?v=VsUzmlZfYNg&t=2740s&ab_channel=JavaScriptMastery
 

@@ -27,7 +27,7 @@ const createPost=async (req,res)=>{
        const PostMessagedata = new PostMessage(postData)
         await PostMessagedata.save()
 
-    return res.status(201).json({status:"saved", PostMessage});
+    return res.status(201).json({message:"saved", data:PostMessagedata});
    } catch (error) {
     return res.status(500).json({status:"failed","error":error.message});
    }

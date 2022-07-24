@@ -1,10 +1,17 @@
 import React,{useState} from 'react'
 import {TextField,Button,Typography,Paper} from '@material-ui/core'
 
-import makeStyles from './style'
+// import { FilledInput } from '@mui/material';
+
+import FileBase from 'react-file-base64';
+import {useDispatch} from 'react-redux'
+
+import makeStyles from './style';
+import {createPost} from '../../actions/posts'
 
 const Form = () => {
   const classes=makeStyles()
+  const dispatch= useDispatch();
   const [psotData,setPostData]=useState({
       creator: "",
       title: "",
@@ -12,10 +19,39 @@ const Form = () => {
       tag: '',
       selectedFile: "" 
   });
-  const onSubmitHandaler= ()=>{
-    alert("ii")
+  const onSubmitHandaler= (e)=>{
+    e.preventDefault()
+
+   
+    console.log(psotData)
+    dispatch(createPost(psotData))
+    setPostData(
+      {
+        creator: "",
+        title: "",
+        message: "",
+        tag: "",
+        selectedFile: "" 
+  
+      }
+
+    )
+    // alert("lap")
   
   }
+  const clearFormHandaler=()=>{
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tag: "",
+      selectedFile: "" 
+
+    })
+
+  }
+
+
   return (
   <>
   <Paper className={classes.paper} >
@@ -40,7 +76,7 @@ const Form = () => {
         variant='outlined'
         label='Title'
         fullWidth
-        value={psotData.message}
+        value={psotData.title}
         onChange={(e)=>setPostData({...psotData,title:e.target.value})}
       /> 
 
@@ -58,15 +94,29 @@ const Form = () => {
 
       <TextField 
        className={classes.fileInput}
-        name='tags'
+        name='tag'
         variant='outlined'
         label='Tags'
         fullWidth
-        value={psotData.tags}
-        onChange={(e)=>setPostData({...psotData,tags:e.target.value})}
+        value={psotData.tag}
+        onChange={(e)=>setPostData({...psotData,tag:e.target.value})}
       /> 
 
-      <Button >Add</Button>
+      <div className={classes.fileInput}>
+           <FileBase 
+          type="file"
+          multiple={false}
+          onDone={ ({ base64 })=>setPostData({...psotData, selectedFile:base64 }) }  
+          />
+         
+        
+
+          
+      </div>
+
+      <Button className={classes.buttonSubmit} variant="contained" color='primary' size="large" fullWidth type='submit'>Add</Button>
+      
+      <Button className={classes.buttonClear} variant="contained" color='secondary' size="small" fullWidth  onClick={clearFormHandaler}>Clear</Button>
     </form>
 
   </Paper>

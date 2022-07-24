@@ -13,3 +13,17 @@ export const getPost = () => async (dispatch)=>{
         
     }   
 }
+export const createPost=(post)=>async (dispatch)=>{
+    try {
+        const resposne = await api.createPost(post);
+        console.log(resposne)
+        console.log("from action psots")
+        // console.log(message)
+        dispatch({type:"CREATE_POST",payload:"saved"}) 
+    } catch (error) {
+        console.log(error.message)
+        
+    }
+
+
+}

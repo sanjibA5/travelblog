@@ -3,8 +3,8 @@ export default (posts = [],action)=>{
         case 'FETCH_ALL':
              return action.payload;
             break;
-        case 'CREATE' :
-            return posts
+        case 'CREATE_POST' :
+            return [...posts,action.payload];
             break   
     
         default:

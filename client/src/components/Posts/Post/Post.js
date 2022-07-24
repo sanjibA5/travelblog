@@ -4,7 +4,7 @@ import makeStyles from './style'
 const Post = () => {
   const classes=makeStyles()
   return (
-    <div>Post</div>
+    <div>Single Post</div>
   )
 }
 
