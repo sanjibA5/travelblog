@@ -16,11 +16,13 @@ const App = () => {
   const style=makeStyles();
   const dispatch=useDispatch();
 
-  useEffect(()=>{
-    dispatch(getPost())
-
-  },[dispatch])
-  return (
+// console.log("above use effect")
+useEffect(()=>{
+  dispatch(getPost())
+  
+},[dispatch])
+// console.log("last use effect")
+return (
     <Container maxWidth="lg">
       <AppBar className={style.appBar} position='static' color='inherit'>
         <Typography className={style.heading} variant='h2' align='center'>Memories</Typography>

@@ -6,7 +6,7 @@ const getPost= async (req,res)=>{
     // get the post
    try {
     const postdata=await PostMessage.find()
-    res.status(200).json({status:"success",data:postdata})
+    res.status(200).json(postdata);
     
    } catch (error) {
     res.status(404).json({status:"failed","error":error.message})
