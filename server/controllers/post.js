@@ -34,7 +34,37 @@ const createPost=async (req,res)=>{
 
 }
 
+const updatePost= async (req,res)=>{
+    try {
+        // console.log(req.params.id)
+        const {params,body} = req;
+        
+        console.log(params.id, body)
+    //    await PostMessage.findByIdAndUpdate(params.id,body,function (err,docs){
+    //     if(err){
+    //         console.log("under if")
+    //         console.log("error",err)
+    //         return res.send("error")
+    //     }else{
+    //         console.log("docs",docs)
+    //         console.log("under else")
+    //        return res.json(docs)
+    //     }
+
+    //    })
+    const data = await PostMessage.findOneAndUpdate({_id:params.id},body,{new:true})
+    res.json(data)
+       
+    } catch (error) {
+        console.log("under catch")
+       return res.send(error.message)
+        
+    }
+
+}
+
 module.exports={
     getPost,
-    createPost
+    createPost,
+    updatePost
 }
