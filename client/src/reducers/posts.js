@@ -11,7 +11,10 @@ export default (posts = [],action)=>{
             // break;
         case 'CREATE_POST' :
             return [...posts,action.payload];
-            break   
+               
+        case 'UPDATE' :
+            return posts.map((post)=>post._id === action.payload._id?action.payload:post);
+               
     
         default:
             return posts

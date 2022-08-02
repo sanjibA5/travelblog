@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import {useDispatch} from 'react-redux';
 
 import {Container,AppBar,Typography, Grow, Grid} from '@material-ui/core'
@@ -15,6 +15,7 @@ import makeStyles  from './styles'
 const App = () => {
   const style=makeStyles();
   const dispatch=useDispatch();
+  const [currentId,setCurrentId]=useState(null);
 
 // console.log("above use effect")
 useEffect(()=>{
@@ -22,6 +23,7 @@ useEffect(()=>{
   
 },[dispatch])
 // console.log("last use effect")
+console.log("currentid",currentId)
 return (
     <Container maxWidth="lg">
       <AppBar className={style.appBar} position='static' color='inherit'>
@@ -33,11 +35,11 @@ return (
           <Grid container justifyContent="space-between" alignItems='stretch' spacing={3}>
             <Grid item xs={12} sm={7}>
              {/* posts component */}
-             <Posts />
+             <Posts  setCurrentId={setCurrentId}/>
             </Grid>
             <Grid item xs={12} sm={4}>
                 {/* form components */}
-                <Form />
+                <Form  currentId={currentId} setCurrentId={setCurrentId}/>
             </Grid>
 
           </Grid>

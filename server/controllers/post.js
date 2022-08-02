@@ -39,7 +39,7 @@ const updatePost= async (req,res)=>{
         // console.log(req.params.id)
         const {params,body} = req;
         
-        console.log(params.id, body)
+        // console.log(params.id, body)
     //    await PostMessage.findByIdAndUpdate(params.id,body,function (err,docs){
     //     if(err){
     //         console.log("under if")
@@ -56,7 +56,7 @@ const updatePost= async (req,res)=>{
     res.json(data)
        
     } catch (error) {
-        console.log("under catch")
+       
        return res.send(error.message)
         
     }

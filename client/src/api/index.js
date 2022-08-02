@@ -10,3 +10,6 @@ export const fetchPost= () => axios.get(`${url}/post`)
 export const createPost=(newPost)=>{
    return axios.post(`${url}/post`,newPost)
 }
+export const updatePost=(id,updatedData)=>{
+   return axios.patch(`${url}/post/${id}`,updatedData)
+}

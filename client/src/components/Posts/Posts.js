@@ -7,7 +7,7 @@ import Post from './Post/Post'
 import makeStyles from './style';
 
 
-const Posts = () => {
+const Posts = ({setCurrentId}) => {
  
 
 
@@ -28,7 +28,7 @@ const Posts = () => {
             
             return(
               <Grid key={post._id} item xs={12} sm={6}>
-                <Post post={post} /> 
+                <Post post={post} setCurrentId={setCurrentId}/> 
 
               </Grid>
 
