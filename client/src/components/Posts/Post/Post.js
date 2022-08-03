@@ -2,6 +2,8 @@ import React from 'react'
 import {Card,CardActions,CardContent,CardMedia,Button,Typography} from '@material-ui/core'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import Delete from '@material-ui/icons/Delete';  
+import {useDispatch} from 'react-redux'
+import {deletePost,likePost} from '../../../actions/posts';
 
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
@@ -12,7 +14,7 @@ const Post = ({post,setCurrentId}) => {
 
  const t =post.tag.map((t)=>`${t} `) 
 // tag showing need to be fixed -> when we create post it is shoeing error need to use set time out
-
+ const dispatch=useDispatch()
  
   const classes=makeStyles()
   return (
@@ -38,11 +40,11 @@ const Post = ({post,setCurrentId}) => {
         <Typography variant='h5' color='textSecondary' className={classes.title} gutterBottom>{post.message} </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button color='primary' size='small' onClick={()=>{}}>
+        <Button color='primary' size='small' onClick={()=>dispatch(likePost(post._id))}>
           <ThumbUpAltIcon fontSize='small'/>Like {post.likeCount}
         </Button>
 
-        <Button color='primary' size='small' onClick={()=>{}}>
+        <Button color='primary' size='small' onClick={()=>dispatch(deletePost(post._id))}>
           <Delete fontSize='small'/>Delete
         </Button>
 
