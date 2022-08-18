@@ -1,3 +1,4 @@
+
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles({
@@ -43,6 +44,8 @@ export default makeStyles({
   },
   title: {
     padding: '0 16px',
+    color:"#1524db",
+    fontFamily:"Uchen ,serif "
   },
   cardActions: {
     padding: '0 16px 8px 16px',

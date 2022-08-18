@@ -12,7 +12,7 @@ import makeStyles from './style'
 
 const Post = ({post,setCurrentId}) => {
 
- const t =post.tag.map((t)=>`${t} `) 
+ const t =post.tag.map((t)=>`#${t} `) 
 // tag showing need to be fixed -> when we create post it is shoeing error need to use set time out
  const dispatch=useDispatch()
  
@@ -37,7 +37,7 @@ const Post = ({post,setCurrentId}) => {
       </div>
         <Typography variant='h5' color='textSecondary' className={classes.title} gutterBottom>{post.title} </Typography>
       <CardContent>
-        <Typography variant='h5' color='textSecondary' className={classes.title} gutterBottom>{post.message} </Typography>
+        <Typography variant='body2'component="p" color='textSecondary' >{post.message} </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
         <Button color='primary' size='small' onClick={()=>dispatch(likePost(post._id))}>
